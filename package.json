@@ -1,6 +1,7 @@
 {
   "name": "n8n-nodes-zohoworkdrive",
   "version": "1.2.0",
+  "type": "module",
   "description": "This is an n8n community node. It lets you use Zoho WorkDrive in your n8n workflows",
   "license": "MIT",
   "homepage": "https://github.com/guirtvidal/n8n-nodes-zohoworkdrive",
@@ -42,11 +43,13 @@
   },
   "devDependencies": {
     "@n8n/node-cli": "*",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.57.0",
+    "@typescript-eslint/parser": "^8.57.0",
     "eslint": "9.32.0",
     "prettier": "3.6.2",
     "release-it": "^19.0.4",
-    "typescript": "5.9.2",
-    "@types/node": "^20.0.0"
+    "typescript": "5.9.2"
   },
   "peerDependencies": {
     "n8n-workflow": "*"
