@@ -23,7 +23,7 @@ export class ZohoWorkDriveOAuth2Api implements ICredentialType {
 			displayName: 'Scope',
 			name: 'scope',
 			type: 'hidden',
-			default: 'ZohoWorkDrive.files.ALL',
+			default: 'ZohoWorkDrive.files.ALL,ZohoWorkDrive.teamfolders.ALL',
 		}
 	];
 }

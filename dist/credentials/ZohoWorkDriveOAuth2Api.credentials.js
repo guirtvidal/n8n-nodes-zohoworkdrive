@@ -22,8 +22,8 @@ class ZohoWorkDriveOAuth2Api {
             {
                 displayName: 'Scope',
                 name: 'scope',
-                type: 'string',
-                default: 'WorkDrive.files.ALL',
+                type: 'hidden',
+                default: 'ZohoWorkDrive.files.ALL,ZohoWorkDrive.teamfolders.ALL',
             }
         ];
     }
