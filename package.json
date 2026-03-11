@@ -10,7 +10,10 @@
     "dist"
   ],
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "workdrive",
+    "Zoho",
+    "zohoworkdrive"
   ],
   "peerDependencies": {
     "n8n-workflow": "*"
