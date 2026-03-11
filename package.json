@@ -25,8 +25,9 @@
   },
   "devDependencies": {
     "@n8n/node-cli": "*",
-    "typescript": "^5.9.2",
-    "@types/node": "^20"
+    "@types/node": "^20",
+    "release-it": "^19.2.4",
+    "typescript": "^5.9.2"
   },
   "peerDependencies": {
     "n8n-workflow": "*"
