@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-zohoworkdrive",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "type": "module",
   "description": "This is an n8n community node. It lets you use Zoho WorkDrive in your n8n workflows",
   "license": "MIT",
