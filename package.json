@@ -1,6 +1,7 @@
 {
   "name": "n8n-nodes-zohoworkdrive",
   "version": "0.1.0",
+  "description": "Zoho WorkDrive node for n8n",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc"
@@ -8,11 +9,14 @@
   "files": [
     "dist"
   ],
+  "keywords": [
+    "n8n-community-node-package"
+  ],
   "peerDependencies": {
     "n8n-workflow": "*"
   },
   "devDependencies": {
-    "@types/node": "^25.4.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "@types/node": "^20.0.0"
   }
 }
