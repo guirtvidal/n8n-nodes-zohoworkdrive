@@ -1,55 +1,32 @@
 {
   "name": "n8n-nodes-zohoworkdrive",
   "version": "1.2.4",
-  "type": "module",
-  "description": "This is an n8n community node. It lets you use Zoho WorkDrive in your n8n workflows",
+  "description": "n8n community node for Zoho WorkDrive",
   "license": "MIT",
-  "homepage": "https://github.com/guirtvidal/n8n-nodes-zohoworkdrive",
   "keywords": [
-    "n8n-community-node-package",
-    "zoho",
-    "workdrive",
-    "n8n"
+    "n8n-community-node-package"
   ],
-  "author": {
-    "name": "Guilherme Vidal",
-    "email": "gui.rt.vidal@gmail.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/guirtvidal/n8n-nodes-zohoworkdrive.git"
-  },
   "scripts": {
     "build": "n8n-node build",
-    "build:watch": "tsc --watch",
-    "dev": "n8n-node dev",
     "lint": "n8n-node lint",
-    "lint:fix": "n8n-node lint --fix",
-    "release": "n8n-node release",
-    "prepublishOnly": "n8n-node prerelease"
+    "release": "n8n-node release"
   },
   "files": [
     "dist"
   ],
   "n8n": {
     "n8nNodesApiVersion": 1,
-    "strict": false,
-    "credentials": [
-      "dist/credentials/ZohoWorkDriveOAuth2Api.credentials.js"
-    ],
     "nodes": [
       "dist/nodes/ZohoWorkDrive/ZohoWorkDrive.node.js"
+    ],
+    "credentials": [
+      "dist/credentials/ZohoWorkDriveOAuth2Api.credentials.js"
     ]
   },
   "devDependencies": {
     "@n8n/node-cli": "*",
-    "@types/node": "^20.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.57.0",
-    "@typescript-eslint/parser": "^8.57.0",
-    "eslint": "9.32.0",
-    "prettier": "3.6.2",
-    "release-it": "^19.0.4",
-    "typescript": "5.9.2"
+    "typescript": "^5.9.2",
+    "@types/node": "^20"
   },
   "peerDependencies": {
     "n8n-workflow": "*"
