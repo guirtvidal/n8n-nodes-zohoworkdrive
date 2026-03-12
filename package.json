@@ -18,7 +18,7 @@
     "n8nNodesApiVersion": 1,
     "nodes": [
       "dist/nodes/ZohoWorkDrive.node.js",
-      "dist/nodes/zohoworkdrive.svg"
+      "dist/nodes/zohoworkdrive.png"
     ],
     "credentials": [
       "dist/credentials/ZohoWorkDriveOAuth2Api.credentials.js"

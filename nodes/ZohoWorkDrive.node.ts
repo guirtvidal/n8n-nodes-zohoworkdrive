@@ -11,7 +11,7 @@ export class ZohoWorkDrive implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Zoho WorkDrive',
 		name: 'zohoWorkDrive',
-		icon: 'file:ZohoWorkDrive.svg',
+		icon: 'file:ZohoWorkDrive.png',
 		group: ['transform'],
 		version: 1,
 		description: 'Interact with Zoho WorkDrive',
