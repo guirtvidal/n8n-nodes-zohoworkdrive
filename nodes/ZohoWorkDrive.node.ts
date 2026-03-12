@@ -1,9 +1,14 @@
-import { INodeType, INodeTypeDescription } from 'n8n-workflow';
+import {
+	IExecuteFunctions,
+	INodeExecutionData,
+	INodeType,
+	INodeTypeDescription,
+} from 'n8n-workflow';
 
-import * as folder from './folder/getAll.operation';
+import * as folderGetAll from './folder/getAll.operation';
 import * as folderCreate from './folder/create.operation';
 
-import * as file from './file/getAll.operation';
+import * as fileGetAll from './file/getAll.operation';
 import * as fileUpload from './file/upload.operation';
 
 import { folderOperations, folderFields } from './FolderDescription';
@@ -22,7 +27,7 @@ export class ZohoWorkDrive implements INodeType {
 		description: 'Interact with Zoho WorkDrive API',
 
 		defaults: {
-			name: 'Zoho WorkDrive'
+			name: 'Zoho WorkDrive',
 		},
 
 		inputs: ['main'],
@@ -31,8 +36,8 @@ export class ZohoWorkDrive implements INodeType {
 		credentials: [
 			{
 				name: 'zohoWorkDriveOAuth2Api',
-				required: true
-			}
+				required: true,
+			},
 		],
 
 		properties: [
@@ -42,55 +47,79 @@ export class ZohoWorkDrive implements INodeType {
 				name: 'resource',
 				type: 'options',
 				options: [
-					{ name: 'Folder', value: 'folder' },
-					{ name: 'File', value: 'file' }
+					{
+						name: 'Folder',
+						value: 'folder',
+					},
+					{
+						name: 'File',
+						value: 'file',
+					},
 				],
-				default: 'folder'
+				default: 'folder',
 			},
 
 			...folderOperations,
 			...folderFields,
 
 			...fileOperations,
-			...fileFields
+			...fileFields,
 
-		]
-
+		],
 	};
 
-	async execute() {
+	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 
 		const items = this.getInputData();
-		const returnData = [];
+		const returnData: INodeExecutionData[] = [];
 
-		const resource = this.getNodeParameter('resource', 0);
-		const operation = this.getNodeParameter('operation', 0);
+		const resource = this.getNodeParameter('resource', 0) as string;
+		const operation = this.getNodeParameter('operation', 0) as string;
 
-		if (resource === 'folder') {
+		for (let i = 0; i < items.length; i++) {
 
-			if (operation === 'getAll') {
-				returnData.push(...await folder.getAll.call(this));
+			if (resource === 'folder') {
+
+				if (operation === 'getAll') {
+
+					const response = await folderGetAll.getAll.call(this);
+
+					returnData.push(...response);
+
+				}
+
+				if (operation === 'create') {
+
+					const response = await folderCreate.create.call(this);
+
+					returnData.push(...response);
+
+				}
+
 			}
 
-			if (operation === 'create') {
-				returnData.push(...await folderCreate.create.call(this));
-			}
+			if (resource === 'file') {
 
-		}
+				if (operation === 'getAll') {
 
-		if (resource === 'file') {
+					const response = await fileGetAll.getAll.call(this);
 
-			if (operation === 'getAll') {
-				returnData.push(...await file.getAll.call(this));
-			}
+					returnData.push(...response);
 
-			if (operation === 'upload') {
-				returnData.push(...await fileUpload.upload.call(this));
+				}
+
+				if (operation === 'upload') {
+
+					const response = await fileUpload.upload.call(this);
+
+					returnData.push(...response);
+
+				}
+
 			}
 
 		}
 
 		return [returnData];
-
 	}
 }
