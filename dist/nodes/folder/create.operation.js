@@ -1,29 +1,38 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.create = create;
+const n8n_workflow_1 = require("n8n-workflow");
 async function create() {
-    const folderId = this.getNodeParameter('folderId', 0);
-    const folderName = this.getNodeParameter('folderName', 0);
-    const response = await this.helpers.requestOAuth2.call(this, 'zohoWorkDriveOAuth2Api', {
-        method: 'POST',
-        url: 'https://workdrive.zoho.com/api/v1/files',
-        body: {
-            data: {
-                attributes: {
-                    name: folderName
-                },
-                type: 'files',
-                relationships: {
-                    parent: {
-                        data: {
-                            id: folderId,
-                            type: 'files'
-                        }
-                    }
+    const items = this.getInputData();
+    const returnData = [];
+    for (let i = 0; i < items.length; i++) {
+        try {
+            const folderName = this.getNodeParameter('folderName', i);
+            const parentId = this.getNodeParameter('parentId', i, '');
+            const body = {
+                data: {
+                    attributes: {
+                        name: folderName
+                    },
+                    type: 'files'
                 }
+            };
+            if (parentId) {
+                body.data.attributes.parent_id = parentId;
             }
-        },
-        json: true
-    });
-    return [{ json: response }];
+            const response = await this.helpers.requestOAuth2.call(this, 'zohoWorkDriveOAuth2Api', {
+                method: 'POST',
+                url: 'https://workdrive.zoho.com/api/v1/files',
+                body,
+                json: true
+            });
+            returnData.push({
+                json: response
+            });
+        }
+        catch (error) {
+            throw new n8n_workflow_1.NodeApiError(this.getNode(), error);
+        }
+    }
+    return returnData;
 }

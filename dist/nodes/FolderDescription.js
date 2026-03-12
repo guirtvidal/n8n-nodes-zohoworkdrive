@@ -26,25 +26,17 @@ exports.folderOperations = [
 ];
 exports.folderFields = [
     {
-        displayName: 'Folder ID',
-        name: 'folderId',
-        type: 'string',
-        default: '',
-        displayOptions: {
-            show: {
-                operation: ['create']
-            }
-        }
-    },
-    {
         displayName: 'Folder Name',
         name: 'folderName',
         type: 'string',
-        default: 'New Folder',
-        displayOptions: {
-            show: {
-                operation: ['create']
-            }
-        }
+        default: '',
+        required: true
+    },
+    {
+        displayName: 'Parent Folder ID',
+        name: 'parentId',
+        type: 'string',
+        default: '',
+        description: 'Opcional. ID Folder Master'
     }
 ];
