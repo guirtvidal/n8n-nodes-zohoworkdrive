@@ -20,7 +20,7 @@ export class ZohoWorkDrive implements INodeType {
 
 		displayName: 'Zoho WorkDrive',
 		name: 'zohoWorkDrive',
-		icon: 'file:ZohoWorkDrive.png',
+		icon: 'file:zohoworkdrive.png',
 		group: ['transform'],
 		version: 1,
 
