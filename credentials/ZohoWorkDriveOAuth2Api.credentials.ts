@@ -23,7 +23,14 @@ export class ZohoWorkDriveOAuth2Api implements ICredentialType {
 			displayName: 'Scope',
 			name: 'scope',
 			type: 'hidden',
-			default: 'WorkDrive.team.CREATE,WorkDrive.team.READ,WorkDrive.team.UPDATE,WorkDrive.team.DELETE,WorkDrive.teamfolders.CREATE,WorkDrive.teamfolders.READ,WorkDrive.teamfolders.UPDATE,WorkDrive.teamfolders.DELETE,WorkDrive.files.CREATE,WorkDrive.files.READ,WorkDrive.files.UPDATE,WorkDrive.files.DELETE',
+			default:
+				'WorkDrive.team.CREATE WorkDrive.team.READ WorkDrive.team.UPDATE WorkDrive.team.DELETE WorkDrive.teamfolders.CREATE WorkDrive.teamfolders.READ WorkDrive.teamfolders.UPDATE WorkDrive.teamfolders.DELETE WorkDrive.files.CREATE WorkDrive.files.READ WorkDrive.files.UPDATE WorkDrive.files.DELETE',
+		},
+		{
+			displayName: 'Auth Query Parameters',
+			name: 'authQueryParameters',
+			type: 'hidden',
+			default: 'access_type=offline&prompt=consent',
 		},
 	];
 }
